@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>One Movies an Entertainment Category Flat Bootstrap Responsive Website Template | Single :: w3layouts</title>
+<title>One Movies an Entertainment Category Flat Bootstrap Responsive Website Template | General :: w3layouts</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,15 +23,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="css/single.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/contactstyle.css" type="text/css" media="all" />
 <link rel="stylesheet" href="css/faqstyle.css" type="text/css" media="all" />
+<!-- font-awesome icons -->
+<link rel="stylesheet" href="css/font-awesome.min.css" />
+<!-- //font-awesome icons -->
 <!-- news-css -->
 <link rel="stylesheet" href="news-css/news.css" type="text/css" media="all" />
 <!-- //news-css -->
 <!-- list-css -->
 <link rel="stylesheet" href="list-css/list.css" type="text/css" media="all" />
 <!-- //list-css -->
-<!-- font-awesome icons -->
-<link rel="stylesheet" href="css/font-awesome.min.css" />
-<!-- //font-awesome icons -->
 <!-- js -->
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <!-- //js -->
@@ -63,17 +63,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	 
 	}); 
-</script> 
-<script src="js/simplePlayer.js"></script>
-<script>
-	$("document").ready(function() {
-		$("#video").simplePlayer();
-	});
 </script>
-
+<!-- refresh panel ajax -->
+<script type="text/javascript" src="ajaxPanel.js"></script>
 </head>
 	
 <body>
+<?php
+session_start();
+
+if(empty($_SESSION))
+header('Location: index.php');
+else
+$user_name=$_SESSION['user_name'];
+?>
 <!-- header -->
 	<div class="header">
 		<div class="container">
@@ -88,8 +91,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="w3l_sign_in_register">
 				<ul>
-					<li><i class="fa fa-phone" aria-hidden="true"></i> (+000) 123 345 653</li>
-					<li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $user_name ?></li>
+					 <form action="signout.php" method="post">
+                                    <li><button type="submit">Sign out</button></li>
+                                    </form>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -121,11 +126,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							  </div>
 							  <div class="form">
 								<h3>Create an account</h3>
-								<form action="./signup.php" method="post">
+								<form action="#" method="post">
 								  <input type="text" name="Username" placeholder="Username" required="">
 								  <input type="password" name="Password" placeholder="Password" required="">
 								  <input type="email" name="Email" placeholder="Email Address" required="">
-								  <input type="text" name="Card" placeholder="Phone Number" required="">
+								  <input type="text" name="Phone" placeholder="Phone Number" required="">
 								  <input type="submit" value="Register">
 								</form>
 							  </div>
@@ -168,7 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<nav>
 						<ul class="nav navbar-nav">
 							<li class="w3_home_act"><a href="index.php">Home</a></li>
-							<li class="dropdown">
+							<li class="dropdown active">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-3">
 									<li>
@@ -177,7 +182,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<li><a href="genres.html">Action</a></li>
 												<li><a href="genres.html">Biography</a></li>
 												<li><a href="genres.html">Crime</a></li>
-												<li><a href="genres.html">Family</a></li>
+												<li><a href="genres.php?genre=family">Family</a></li>
 												<li><a href="horror.html">Horror</a></li>
 												<li><a href="genres.html">Romance</a></li>
 												<li><a href="genres.html">Sports</a></li>
@@ -249,239 +254,121 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</nav>	
 		</div>
 	</div>
-<!-- //nav -->
-<div class="general_social_icons">
-	<nav class="social">
-		<ul>
-			<li class="w3_twitter"><a href="#">Twitter <i class="fa fa-twitter"></i></a></li>
-			<li class="w3_facebook"><a href="#">Facebook <i class="fa fa-facebook"></i></a></li>
-			<li class="w3_dribbble"><a href="#">Dribbble <i class="fa fa-dribbble"></i></a></li>
-			<li class="w3_g_plus"><a href="#">Google+ <i class="fa fa-google-plus"></i></a></li>				  
-		</ul>
-  </nav>
-</div>
-<!-- single -->
-<div class="single-page-agile-main">
-<div class="container">
-		<!-- /w3l-medile-movies-grids -->
-			<div class="agileits-single-top">
-				<ol class="breadcrumb">
-				  <li><a href="index.php">Home</a></li>
-				  <li class="active">Single</li>
-				</ol>
-			</div>
-			<div class="single-page-agile-info">
-                   <!-- /movie-browse-agile -->
-                           <div class="show-top-grids-w3lagile">
-				<div class="col-sm-8 single-left">
-					<div class="song">
-						<div class="song-info">
-							<h3>THE LEGEND OF TARZAN - Official Trailer 2</h3>	
-					</div>
-						<div class="video-grid-single-page-agileits">
-							<div data-video="dLmKio67pVQ" id="video"> <img src="images/5.jpg" alt="" class="img-responsive" /> </div>
-						</div>
-					</div>
-					<div class="song-grid-right">
-						<div class="share">
-							<h5>Share this</h5>
-							<div class="single-agile-shar-buttons">
-							<ul>
-								<li>
-									<div class="fb-like" data-href="https://www.facebook.com/w3layouts" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
-									<script>(function(d, s, id) {
-									  var js, fjs = d.getElementsByTagName(s)[0];
-									  if (d.getElementById(id)) return;
-									  js = d.createElement(s); js.id = id;
-									  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
-									  fjs.parentNode.insertBefore(js, fjs);
-									}(document, 'script', 'facebook-jssdk'));</script>
-								</li>
-								<li>
-									<div class="fb-share-button" data-href="https://www.facebook.com/w3layouts" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2Fw3layouts&amp;src=sdkpreparse">Share</a></div>
-								</li>
-								<li class="news-twitter">
-									<a href="https://twitter.com/w3layouts" class="twitter-follow-button" data-show-count="false">Follow @w3layouts</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-								</li>
-								<li>
-									<a href="https://twitter.com/intent/tweet?screen_name=w3layouts" class="twitter-mention-button" data-show-count="false">Tweet to @w3layouts</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-								</li>
-								<li>
-									<!-- Place this tag where you want the +1 button to render. -->
-									<div class="g-plusone" data-size="medium"></div>
 
-									<!-- Place this tag after the last +1 button tag. -->
-									<script type="text/javascript">
-									  (function() {
-										var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-										po.src = 'https://apis.google.com/js/platform.js';
-										var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-									  })();
-									</script>
-								</li>
+<!-- /w3l-medile-movies-grids -->
+	<div class="general-agileits-w3l">
+		<div class="w3l-medile-movies-grids">
+
+				<!-- /movie-browse-agile -->
+				<?php
+
+		$genre=$_GET['genre'];
+		$connection = mysqli_connect("localhost","root","","movie") or die("Error " . mysqli_error($connection));
+
+
+            $sql = "select * from movies where movie_genre='$genre'";
+            $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
+             $emparray = array();
+                $i=0;
+?>
+
+				      <div class="movie-browse-agile">
+					     <!--/browse-agile-w3ls -->
+						<div class="browse-agile-w3ls general-w3ls">
+								<div class="tittle-head">
+									<h4 class="latest-text"><?php echo $genre ."Movie"?> </h4>
+									<div class="container">
+										<div class="agileits-single-top">
+											<ol class="breadcrumb">
+											  <li><a href="index.php">Home</a></li>
+											  <li class="active">Genres</li>
+											</ol>
+										</div>
+									</div>
+								</div>
+								     <div class="container">
+								     <?php
+                                     	 while($row =mysqli_fetch_assoc($result))
+                                              {
+                                                        $i++;
+                                                                                     $emparray[$i] = $row;
+                                                                                     $movie_name=$emparray[$i]['movie_name'];
+                                                                                     $movie_img_path=$emparray[$i]['movie_img_path'];
+                                                                                     $movie_price=$emparray[$i]['movie_price'];
+
+
+
+                                                                 					?>
+							<div class="browse-inner">
+
+							   <div class="col-md-2 w3l-movie-gride-agile">
+										 <a href="single.php?movie_name=<?php echo $movie_name ?>" class="hvr-shutter-out-horizontal"><img src= "<?php echo $movie_img_path ?>" title="album-name" alt=" " />
+									     <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+									</a>
+									  <div class="mid-1">
+										<div class="w3l-movie-text">
+											<h6><a href="single.php?movie_name=<?php echo $movie_name ?>"><?php echo $movie_name ?></a></h6>
+										</div>
+
+										<input type='submit' value='add to card' onclick="change('<?php echo $movie_name?>','<?php echo $movie_price?>')"></input>
+
+
+
+
+
+										<div class="mid-2">
+										
+											<p>2016</p>
+											<div class="block-stars">
+												<ul class="w3l-ratings">
+													     <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+														 <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+														 <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+														 <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+														 <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+														  
+										
+												</ul>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+											
+									</div>
+							 	    <div class="ribben two">
+										<p>NEW</p>
+									</div>	
+									</div>
+
+								</div>
+							<!-- //latest-movies1 -->
+
+<?php
+					}
+                        ?>
+                        <input id='test' value=''></input>
+								</div>
+						</div>
+
+				<!--//browse-agile-w3ls -->
+						<div class="blog-pagenat-wthree">
+							<ul>
+								<li><a class="frist" href="#">Prev</a></li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a class="last" href="#">Next</a></li>
 							</ul>
 						</div>
-						</div>
 					</div>
-					<div class="clearfix"> </div>
-
-					<div class="all-comments">
-						<div class="all-comments-info">
-							<a href="#">Comments</a>
-							<div class="agile-info-wthree-box">
-								<form action="download.php" method="post">
-									<input type="text" placeholder="Name" required="">			           					   
-									<input type="text" placeholder="Email" required="">
-									<input type="text" placeholder="Phone" required="">
-									<textarea placeholder="Message" required=""></textarea>
-									<input type="submit" value="SEND">
-									<div class="clearfix"> </div>
-								</form>
-							</div>
-						</div>
-						<div class="media-grids">
-							<div class="media">
-								<h5>TOM BROWN</h5>
-								<div class="media-left">
-									<a href="#">
-										<img src="images/user.jpg" title="One movies" alt=" " />
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
-								</div>
-							</div>
-							<div class="media">
-								<h5>MARK JOHNSON</h5>
-								<div class="media-left">
-									<a href="#">
-									<img src="images/user.jpg" title="One movies" alt=" " />
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
-								</div>
-							</div>
-							<div class="media">
-								<h5>STEVEN SMITH</h5>
-								<div class="media-left">
-									<a href="#">
-									<img src="images/user.jpg" title="One movies" alt=" " />
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 single-right">
-					<h3>Up Next</h3>
-					<div class="single-grid-right">
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/m1.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/m2.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views </p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/m3.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/m4.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/m5.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/c5.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author"><a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/m6.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author">By <a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="single-right-grids">
-							<div class="col-md-4 single-right-grid-left">
-								<a href="single.html"><img src="images/m15.jpg" alt="" /></a>
-							</div>
-							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> Nullam interdum metus</a>
-								<p class="author">By <a href="#" class="author">John Maniya</a></p>
-								<p class="views">2,114,200 views</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-
-					</div>
-				</div>
-				
-
-				
-				<div class="clearfix"> </div>
-			</div>
-				<!-- //movie-browse-agile -->
+				    <!-- //movie-browse-agile -->
+				   <!--body wrapper start-->
 				<!--body wrapper start-->
-			<div class="w3_agile_banner_bottom_grid">
+					<div class="review-slider">
+						 <h4 class="latest-text">Movie Reviews</h4>
+						       <div class="container">
+						 		<div class="w3_agile_banner_bottom_grid">
 				<div id="owl-demo" class="owl-carousel owl-theme">
 					<div class="item">
 						<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
@@ -737,15 +624,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 			</div>
-		<!--body wrapper end-->
-						
-							 
-				</div>
-				<!-- //w3l-latest-movies-grids -->
+						<!--body wrapper end-->
+					</div>	
 			</div>	
 		</div>
 	<!-- //w3l-medile-movies-grids -->
-	
+	</div>
+	<!-- //comedy-w3l-agileits -->
+
+	<div  class="col-md-4">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                   MOVIE TO PURCHASE
+                </div>
+                <div id='tagdiv' class="panel-body">
+
+                    <ul id="tagul" class="media-list">
+
+					 <li class="media">
+
+                                    <div class="media-body">
+                                         <div class="media">
+                                               <div class="media-body" >
+                                                    <a href="#" style="text-decoration: none">
+                                                   <h5 id="online_user"></h5>
+
+                                                   <small class="text-muted"></small>
+
+                                                </div>
+                                           </div>
+
+                                        </div>
+                     </li>
+                    </ul>
+                     </div>
+                 </div>
+<button type='submit' action='#' method='post'>Purchase</button>
+     </div>
+
+
 <!-- footer -->
 	<div class="footer">
 		<div class="container">

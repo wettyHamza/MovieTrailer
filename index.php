@@ -178,7 +178,7 @@ header('Location: home.php');
 											<li><a href="genres.html">Action</a></li>
 											<li><a href="genres.html">Biography</a></li>
 											<li><a href="genres.html">Crime</a></li>
-											<li><a href="genres.html">Family</a></li>
+											<li><a href="genres.php?genre=family">Family</a></li>
 											<li><a href="horror.html">Horror</a></li>
 											<li><a href="genres.html">Romance</a></li>
 											<li><a href="genres.html">Sports</a></li>
