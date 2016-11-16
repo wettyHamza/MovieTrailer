@@ -76,6 +76,7 @@ if(empty($_SESSION))
 header('Location: index.php');
 else
 $user_name=$_SESSION['user_name'];
+
 ?>
 <!-- header -->
 	<div class="header">
@@ -640,26 +641,57 @@ $user_name=$_SESSION['user_name'];
                 <div id='tagdiv' class="panel-body">
 
                     <ul id="tagul" class="media-list">
+<?php
+if(isset($_SESSION['basket']))
+{
+$movies=$_SESSION['basket'];
+foreach($movies as $val){
+    foreach ($val as $cle => $element){
+   $movie_name=$cle;
+   $movie_price=$element;
 
-					 <li class="media">
+					 echo'<li class="media">';
 
-                                    <div class="media-body">
-                                         <div class="media">
-                                               <div class="media-body" >
-                                                    <a href="#" style="text-decoration: none">
-                                                   <h5 id="online_user"></h5>
 
-                                                   <small class="text-muted"></small>
+                                                     echo'<h5 id="online_user">'.$movie_name.'.price'.$movie_price.'</h5>';
 
-                                                </div>
-                                           </div>
 
-                                        </div>
-                     </li>
+
+                    echo' </li>';
+                      }
+                        }
+                        echo 'total'. $_SESSION['total'];
+                        }
+                     ?>
                     </ul>
                      </div>
                  </div>
+
 <button type='submit' action='#' method='post'>Purchase</button>
+<input value="<?php echo $_SESSION['total']; ?>"></input>
+<?php
+if(isset($_SESSION['total'])){
+?>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="R9BVFKFPF4DHW">
+<input type="hidden" name="lc" value="US">
+<input type="hidden" name="item_name" value="Movie">
+<input type="hidden" name="amount"id="amounth" value="<?php echo $_SESSION['total']; ?>">
+<input type="hidden" name="currency_code" value="EUR">
+<input type="hidden" name="button_subtype" value="services">
+<input type="hidden" name="no_note" value="0">
+<input type="hidden" name="cn" value="Ajouter des instructions particulières pour le vendeur :">
+<input type="hidden" name="no_shipping" value="2">
+<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+<input type="image" src="https://www.paypalobjects.com/fr_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+<img alt="" border="0" src="https://www.paypalobjects.com/fr_XC/i/scr/pixel.gif" width="1" height="1">
+</form>
+<?php
+}
+?>
+
+
      </div>
 
 
@@ -748,6 +780,7 @@ $(document).ready(function(){
 								
 			});
 	</script>
+
 <!-- //here ends scrolling icon -->
 </body>
 </html>

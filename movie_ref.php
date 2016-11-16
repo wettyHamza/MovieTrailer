@@ -19,7 +19,7 @@ array_push($_SESSION['basket'], $movie_purchased);
    }
 }*/
 //header('Location: genres.php');
-
+ echo'<ul class="media-list">';
 $movies=$_SESSION['basket'];
 $total=0;
 foreach($movies as $val){
@@ -28,11 +28,10 @@ foreach($movies as $val){
    $movie_price=$element;
 
 $total=$total+$movie_price;
+$_SESSION['total']=$total;
                                   echo' <li>';
 
                                                echo'<h5 id="online_user">'.$movie_name.'.price'.$movie_price.'</h5>';
-
-
 
                                    echo' </li>';
 
@@ -45,6 +44,7 @@ $total=$total+$movie_price;
 
 }
 }
- echo 'total'. $total;
+ //echo 'total'. $total;
 
+//echo 'sessuin'. $_SESSION['total'];
    ?>
