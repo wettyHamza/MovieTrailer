@@ -11,7 +11,6 @@
 
     $sql = "INSERT INTO `users`(`user_name`, `user_mail`, `user_pswd`, `user_card`) VALUES ('$name','$email','$password','$card')";
     $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
-    echo 'tayeb';
     //close the db connection
     mysqli_close($connection);
 ?>
